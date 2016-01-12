@@ -44,9 +44,6 @@ nav{
 			&:hover, &.active{
 				background-color: transparent;
 			}
-			&:hover{
-				
-			}
 			a{
 				font-family: 'Roboto Mono', ;
 				line-height:62px;
@@ -58,8 +55,17 @@ nav{
 		}
 	}
 	
-	ul.sidenav{
-		
+	.sidenav{
+		li{
+			&:hover{
+				background:transparent;
+			}
+			a{
+				&:hover{
+					background:transparent;
+				}
+			}
+		}
 	}
 	
 	a.button-collapse{
