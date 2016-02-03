@@ -11,6 +11,24 @@
 					<li class="waves-effect waves-light {% if page.url contains node.url %}active{% endif %}"><a class="internal-link" href="{{site.baseurl}}{{node.url}}">{{node.title}}</a></li>
 				{% endif %}
 			{% endfor %}
+			
+			
+			
+			<li class="waves-effect waves-light dropdown-button" data-activates='dropdown-docs'><a href='/docs/'>Docs</a></li>
+
+			<!-- Dropdown Structure -->
+			<ul id='dropdown-docs' class='dropdown-content'>
+			
+				{% for node in site.docs %}
+					{% assign urlArray = node.url | split: '/' %}
+					{% for piece in urlArray %}
+						{% if forloop.index == 3 %}
+							<li><a href="{{site.baseurl}}/docs/{{piece}}">{{piece}}</a></li>
+							<!--{{ piece }}-->
+						{% endif %}
+					{% endfor %}
+				{% endfor %}
+			</ul>
 			<div class="active-indicator"></div>
 		</ul>
 		

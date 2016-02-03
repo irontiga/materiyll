@@ -9,12 +9,14 @@
 		</header>
 
 		<main>
+			
 			<div id="main-content">
 				{{ content }}
+				
+				{% include footer.html %}
 			</div>
+			
 		</main>
-		
-		{% include footer.html %}
 		
 		<div class="ripple-wrapper">
 			<div class="ripple"></div>

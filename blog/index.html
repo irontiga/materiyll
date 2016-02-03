@@ -1,0 +1,69 @@
+---
+layout: default
+title: Blog
+navGroup: core
+---
+
+<!-- This loops through the paginated posts -->
+<div class="row">
+{% for post in paginator.posts %}
+	<div class="col-xs-12 col-sm-6">
+		<div class="card grey-text text-darken-3" style="height:100%;">
+			
+			<a class="btn-floating btn-large waves-effect waves-dark dropdown-button z-depth-0 transparent"  data-activates='dropdown-{{ post.date |  date: "%b-%d-%Y-%M-%H" }}' style="position:absolute; right:0; margin:10px;"><i class="material-icons {% if post.image %}{% else %}grey-text text-darken-2{% endif %}">share</i></a>
+			
+			<ul id='dropdown-{{ post.date | date: "%b-%d-%Y-%M-%H" }}' class='dropdown-content'>
+				<li><a href="http://www.facebook.com/sharer.php?u={{site.url}}{{site.baseurl}}{{post.url}}">Facebook</a></li>
+				<li><a href="https://twitter.com/share?url={{site.url}}{{site.baseurl}}{{post.url}}">Twitter</a></li>
+				<li><a href="https://plus.google.com/share?url={{site.url}}{{site.baseurl}}{{post.url}}">Google +</a></li>
+			</ul>
+			
+			{% if post.image %}
+				<div class="card-image">
+					<img src="{{site.baseurl}}/img/post-img/{{post.image}}">
+					<span class="card-title mono">{{ post.title }}</span>
+				</div>
+			{% endif %}
+			
+			<div class="card-content">
+				
+				{% if post.image %}{% else %}
+				<span class="card-title mono normal">{{ post.title }}</span>
+					<br>
+				{% endif %}
+				
+				<i class="grey-text text-darken-1">{{ post.date }}</i>
+				
+				<br>
+				<br>
+				
+				{{ post.excerpt }}
+				
+				<a style="position:relative; top:-5px;" class="internal-link right btn-flat waves-effect waves-cyan cyan-text" href="{{site.baseurl }}{{post.url}}">Read more 
+					<i style="position:relative; font-size:2rem; top:9px;" class="material-icons">chevron_right</i>
+				</a>
+				<a style="line-height:34px">&nbsp;</a>
+			</div>
+		</div>
+	</div>
+{% endfor %}
+</div>
+
+<!-- Pagination links -->
+<div class="pagination">
+	
+	{% if paginator.previous_page %}
+		<a href="{{ paginator.previous_page_path }}" class="previous">Previous</a>
+	{% else %}
+		<span class="previous">Previous</span>
+	{% endif %}
+	
+	<span class="page_number ">Page: {{ paginator.page }} of {{ paginator.total_pages }}</span>
+	
+	{% if paginator.next_page %}
+		<a href="{{ paginator.next_page_path }}" class="next">Next</a>
+	{% else %}
+		<span class="next ">Next</span>
+	{% endif %}
+	
+</div>

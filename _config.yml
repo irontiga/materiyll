@@ -3,9 +3,19 @@ title: Materiyll
 email: irontiga@gmail.com
 description: Materiyll is a material design template for Jekyll, built with materializecss.com
 baseurl: "/materiyll" # the subpath of your site, e.g. /blog/
-url: "http://irontiga.github.io" # the base hostname & protocol for your site
+url: "http://irontiga.com" # the base hostname & protocol for your site
 twitter_username: 
 github_username: irontiga
 
 # Build settings
 markdown: kramdown
+
+paginate: 4
+paginate_path: "/blog/page/:num/"
+
+permalink: /blog/:title/
+
+collections:
+  docs:
+    output: true
+    permalink: /docs/:path/

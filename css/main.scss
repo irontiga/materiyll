@@ -22,16 +22,25 @@ body{
 	flex-direction:column;
 	min-height:100vh;
 	max-height:100vh;
+	overflow:hidden;
 }
 header{
 	height:64px;
 	z-index:1000;
+	display:flex-box;
+	//position:fixed;
+	//width:100%;
 }
 main{
 	transition:all 0.5s ease;
-	flex: 1 0 auto;
-	overflow:auto;
+	flex: 1;
+	overflow-y:scroll;
+	overflow-x: hidden;
 	display:flex-box;
+}
+
+footer.page-footer{
+	margin:0;
 }
 
 .container {
@@ -46,6 +55,9 @@ nav{
 			}
 			a{
 				font-family: 'Roboto Mono', ;
+				font-weight:500;
+				font-size:14px;
+				text-transform: uppercase;
 				line-height:62px;
 				&:hover{
 					background-color: transparent;
@@ -92,12 +104,20 @@ p{
 	font-size:17px;
 }
 
-::-webkit-scrollbar {
-	width: 8px;
+::-webkit-scrollbar{
+	width:8px;
+	position:fixed;
+	right:0;
+	&:hover{
+		width: 8px;
+	}
 }
 
-::-webkit-scrollbar-track {
-	background:rgba(255,255,255,0.1);
+::-webkit-scrollbar-track{
+	&:hover{
+		background:rgba(255,255,255,0.1);
+	}
+	background:rgba(255,255,255,0);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -114,6 +134,9 @@ p{
 	left:0;
 	bottom:0;
 	right:0;
+	height:0;
+	width:0;
+	z-index:999;
 }
 .ripple{
 	border-radius:50%;
@@ -122,11 +145,11 @@ p{
 	height:0;
 	width:0;
 	margin:0;
-	border:0 solid #222;
+	border:0 solid #555;
 	background:transparent;
 	&.activating{
 		transition:all 0.3s ease;
-		border:1500px solid #555;
+		border:1500px solid #222;
 		margin-top: -1500px;
 		margin-left:-1500px; 
 	}
